@@ -12,6 +12,7 @@ import { ArtistCardComponent, ArtistDetailsComponent, ArtistsListComponent } fro
 import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthExpiredInterceptor } from './interceptors/auth-expired.interceptor';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthExpiredInterceptor,
       multi: true
     }
   ],
