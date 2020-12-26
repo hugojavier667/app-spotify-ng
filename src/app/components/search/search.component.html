@@ -1,0 +1,18 @@
+<div class="mt-4 d-flex justify-content-center">
+  <div [ngStyle]="{maxWidth: '60%'}" class="input-group input-group-sm mb-3">
+    <input
+      (ngModelChange)="search($event)"
+      [(ngModel)]="searchTerm"
+      aria-describedby="inputGroup-sizing-sm"
+      aria-label="Small"
+      class="form-control"
+      placeholder="Search here..."
+      type="text"
+    />
+  </div>
+</div>
+<div class="cards-container">
+  <div *ngFor="let artist of searchResults" class="m-2">
+    <app-artist-card [artist]="artist"></app-artist-card>
+  </div>
+</div>

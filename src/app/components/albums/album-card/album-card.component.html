@@ -1,0 +1,12 @@
+<div class="card">
+  <img [routerLink]="album.id" [src]="album.images[0].url" alt="..." class="card-img-top cursor-pointer"/>
+  <div class="card-body">
+    <h6 class="card-title">{{album.name}}</h6>
+    <p class="card-text">
+      <span *ngFor="let artist of album.artists" [routerLink]="['/', 'artists', artist.id]"
+            class="badge badge-primary cursor-pointer">
+        {{artist.name}}
+      </span>
+    </p>
+  </div>
+</div>

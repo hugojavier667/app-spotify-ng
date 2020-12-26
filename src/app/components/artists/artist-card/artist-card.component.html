@@ -1,0 +1,14 @@
+<div class="card">
+  <img [src]="artist.images[0] ? artist.images[0].url : 'assets/img/noimage.png'"
+       alt="..." class="card-img-top cursor-pointer"
+       [routerLink]="['/', 'artists', artist.id]"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{artist.name}}</h5>
+    <p class="card-text">
+    <span *ngFor="let genre of artist.genres" class="badge badge-primary cursor-pointer">
+    {{genre}}
+    </span>
+    </p>
+  </div>
+</div>

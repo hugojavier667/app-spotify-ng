@@ -1,0 +1,41 @@
+<div class='row mt-4'>
+  <div class='col-4'>
+    <img
+      [ngStyle]="{ maxWidth: '80%' }"
+      [src]="artist.images[0].url"
+      alt='...'
+      class='img-fluid rounded mx-auto d-block'
+    />
+    <div class='d-flex justify-content-center mt-2'>
+      <p class="mr-2">{{artist.followers.total}}</p>
+      <fa-icon [icon]="faUserFriends"></fa-icon>
+    </div>
+  </div>
+  <div class='col-6'>
+    <h1>{{artist.name}}</h1>
+    <span *ngFor="let genre of artist.genres" class='badge badge-primary'>
+      {{genre}}
+    </span>
+    <br/>
+    <br/>
+    <div class="mt-1">
+      <h2>Top tracks</h2>
+      <div *ngFor="let track of artistTopTracks.slice(0, 5)" class="d-flex mb-2 align-middle align-content-between">
+        <img [ngStyle]="{maxHeight: '3rem'}" [src]="track.album.images.reverse()[0].url" alt="..." class="mr-2"/>
+        <p class="">{{track.name}}</p>
+        <p class="ml-auto">{{track.duration_ms | msToTime}}</p>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <h3>Albums</h3>
+    <ul>
+      <li *ngFor="let album of artistAlbums.slice(0, 8)"
+          [routerLink]="['/', 'albums', album.id]"
+          class="cursor-pointer"
+      >
+        {{album.name}}
+      </li>
+    </ul>
+  </div>
+</div>

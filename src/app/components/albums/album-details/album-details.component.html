@@ -1,0 +1,28 @@
+<div class='row mt-4'>
+  <div class='col-4'>
+    <img
+      [ngStyle]="{maxWidth: '80%' }"
+      [src]="album.images[0].url"
+      alt='...'
+      class='img-fluid rounded mx-auto d-block'
+    />
+  </div>
+  <div class='col-6'>
+    <h1>{{album.name}}</h1>
+    <span *ngFor="let artist of album.artists"
+          class='badge badge-primary cursor-pointer'
+          [routerLink]="['/', 'artists', artist.id]"
+    >
+      {{artist.name}}
+    </span>
+    <br/>
+    <br/>
+    <div className="mt-1">
+      <h2>Tracks</h2>
+      <div *ngFor="let track of album.tracks.items" class="d-flex align-middle align-content-between">
+        <p>{{track.track_number}} - {{track.name}}</p>
+        <p class="ml-auto">{{track.duration_ms | msToTime}}</p>
+      </div>
+    </div>
+  </div>
+</div>
