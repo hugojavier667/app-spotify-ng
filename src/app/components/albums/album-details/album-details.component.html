@@ -15,14 +15,21 @@
     >
       {{artist.name}}
     </span>
-    <br/>
-    <br/>
-    <div className="mt-1">
-      <h2>Tracks</h2>
-      <div *ngFor="let track of album.tracks.items" class="d-flex align-middle align-content-between">
-        <p>{{track.track_number}} - {{track.name}}</p>
-        <p class="ml-auto">{{track.duration_ms | msToTime}}</p>
-      </div>
+    <div class="mt-2 d-none d-md-block">
+      <ng-container *ngTemplateOutlet="songsList">
+      </ng-container>
     </div>
   </div>
+  <div class="col-12 mt-4 d-block d-md-none pr-5 pl-5">
+    <ng-container *ngTemplateOutlet="songsList">
+    </ng-container>
+  </div>
 </div>
+
+<ng-template #songsList>
+  <h2>Tracks</h2>
+  <div *ngFor="let track of album.tracks.items" class="d-flex align-middle align-content-between">
+    <p>{{track.track_number}} - {{track.name}}</p>
+    <p class="ml-auto">{{track.duration_ms | msToTime}}</p>
+  </div>
+</ng-template>
