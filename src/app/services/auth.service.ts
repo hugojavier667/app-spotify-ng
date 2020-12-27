@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { AngularFireMessaging } from '@angular/fire/messaging';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private afMessaging: AngularFireMessaging) {
+    this.requestPushNotificationsPermission();
   }
 
   get token(): Observable<string> {
@@ -41,5 +43,17 @@ export class AuthService {
       }),
       map(response => response.access_token)
     );
+  }
+
+  requestPushNotificationsPermission(): void {
+    this.afMessaging.requestToken
+      .subscribe(
+        (token) => {
+          console.log('Permission granted! Save to the server!', token);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 }
