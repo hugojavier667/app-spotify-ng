@@ -1,6 +1,8 @@
-# SpotifyClon
+# SpotifyClone PWA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+Progressive Web Application built on Angular and hosted on Firebase Hosting.
+
+Web page link: https://spotiapp-2b89b.web.app/
 
 ## Development server
 
